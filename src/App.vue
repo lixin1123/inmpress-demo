@@ -1,6 +1,10 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="left"> 
+    <button @click="goOn">上一步</button>
+    <button @click="goNext">下一步</button>
+  </div>
+  
+  <HelloWorld />
 </template>
 
 <script>
@@ -10,17 +14,27 @@ export default {
   name: 'App',
   components: {
     HelloWorld
+  },
+  setup() {
+    const goOn = () => {
+      console.log('4444444444')
+    }
+    return {
+      goOn
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+button {
+    cursor: pointer;
+}
+.left{
+    width: 200px;
+    height: 100%;
+    background-color: beige;
+    float: left;
+    position: fixed;
 }
 </style>
