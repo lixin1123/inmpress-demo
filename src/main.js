@@ -1,4 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-
-createApp(App).mount('#app')
+import { fabric } from 'fabric'
+const app = createApp(App)
+app.mount('#app')
+app.use(fabric)

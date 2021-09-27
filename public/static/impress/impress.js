@@ -85,6 +85,7 @@
   var css = function( el, props ) {
       var key, pkey;
       for ( key in props ) {
+          // eslint-disable-next-line no-prototype-builtins
           if ( props.hasOwnProperty( key ) ) {
               pkey = pfx( key );
               if ( pkey !== null ) {
@@ -829,6 +830,7 @@
   var libraryFactories = {};
   impress.addLibraryFactory = function( obj ) {
       for ( var libname in obj ) {
+          // eslint-disable-next-line no-prototype-builtins
           if ( obj.hasOwnProperty( libname ) ) {
               libraryFactories[ libname ] = obj[ libname ];
           }
@@ -839,6 +841,7 @@
   var initLibraries = function( rootId ) { //jshint ignore:line
       var lib = {};
       for ( var libname in libraryFactories ) {
+          // eslint-disable-next-line no-prototype-builtins
           if ( libraryFactories.hasOwnProperty( libname ) ) {
               if ( lib[ libname ] !== undefined ) {
                   throw "impress.js ERROR: Two libraries both tried to use libname: " +  libname;
@@ -1109,6 +1112,7 @@
       // Reset id of steps ("step-1" id's are auto generated)
       steps = startingState.roots[ rootId ].steps;
       var step;
+      // eslint-disable-next-line no-cond-assign
       while ( step = steps.pop() ) {
           if ( step.id === null ) {
               step.el.removeAttribute( "id" );
@@ -1273,6 +1277,7 @@
 * Copyright 2016 Henrik Ingo, henrik.ingo@avoinelama.fi
 * Released under the MIT license.
 */
+// eslint-disable-next-line no-redeclare
 /* global clearTimeout, setTimeout, document */
 
 ( function( document ) {
@@ -1307,6 +1312,8 @@
       }
 
       var toolbar = document.querySelector( "#impress-toolbar" );
+      console.log('111111111111too', toolbar)
+      
       if ( toolbar ) {
           addToolbarButton( toolbar );
       }
@@ -1410,6 +1417,7 @@
                  'title="Autoplay" class="impress-autoplay">' + // jshint ignore:line
                  getButtonText() + "</button>"; // jshint ignore:line
       toolbarButton = makeDomElement( html );
+      console.log(toolbarButton)
       toolbarButton.addEventListener( "click", function() {
           toggleStatus();
           if ( status === "playing" ) {
@@ -1424,7 +1432,6 @@
               setAutoplayTimeout( 0 );
           }
       } );
-
       util.triggerEvent( toolbar, "impress:toolbar:appendChild",
                     { group: 10, element: toolbarButton } );
   };
@@ -1440,6 +1447,7 @@
 * Copyright 2014 @Strikeskids
 * Released under the MIT license.
 */
+// eslint-disable-next-line no-redeclare
 /* global document */
 
 ( function( document ) {
@@ -1455,6 +1463,7 @@
   var css = function( el, props ) {
       var key, pkey;
       for ( key in props ) {
+          // eslint-disable-next-line no-prototype-builtins
           if ( props.hasOwnProperty( key ) ) {
               pkey = pfx( key );
               if ( pkey !== null ) {
@@ -1507,6 +1516,7 @@
           removeBlackout();
       } else {
           css( canvas, {
+              // eslint-disable-next-line no-cond-assign
               display: ( blackedOut = !blackedOut ) ? "none" : "block"
           } );
           blackedOut = true;
@@ -1521,6 +1531,7 @@
       root = event.target;
       canvas = root.firstElementChild;
       var gc = api.lib.gc;
+      // eslint-disable-next-line no-unused-vars
       var util = api.lib.util;
 
       gc.addEventListener( document, "keydown", function( event ) {
@@ -1564,6 +1575,7 @@
 * Copyright 2016 Henrik Ingo (@henrikingo)
 * Released under the MIT license.
 */
+// eslint-disable-next-line no-redeclare
 /* global markdown, hljs, mermaid, impress, document, window */
 
 ( function( document, window ) {
@@ -1647,9 +1659,11 @@
 * Copyright 2016 Henrik Ingo
 * MIT License
 */
+// eslint-disable-next-line no-redeclare
 /* global document */
 ( function( document ) {
   "use strict";
+  // eslint-disable-next-line no-unused-vars
   var root;
   var api;
 
@@ -1692,6 +1706,7 @@
 * Copyright 2019 @giflw
 * Released under the MIT license.
 */
+// eslint-disable-next-line no-redeclare
 /* global document */
 
 ( function( document ) {
@@ -1770,6 +1785,7 @@
 * Copyright 2016-2017 Henrik Ingo (@henrikingo)
 * Released under the MIT license.
 */
+// eslint-disable-next-line no-redeclare
 /* global window, document, impress */
 
 ( function( document, window ) {
@@ -1854,6 +1870,7 @@
           return;
       }
       if ( data.gotoNext && event.detail.reason === "next" ) {
+          // eslint-disable-next-line no-redeclare
           var newTarget = document.getElementById( data.gotoNext ); // jshint ignore:line
           if ( newTarget && newTarget.classList.contains( "step" ) ) {
               event.detail.next = newTarget;
@@ -1877,6 +1894,7 @@
           return;
       }
       if ( data.gotoPrev && event.detail.reason === "prev" ) {
+          // eslint-disable-next-line no-redeclare
           var newTarget = document.getElementById( data.gotoPrev ); // jshint ignore:line
           if ( newTarget && newTarget.classList.contains( "step" ) ) {
               event.detail.next = newTarget;
@@ -1901,6 +1919,7 @@
           return;
       }
       if ( data.goto ) {
+          // eslint-disable-next-line no-redeclare
           var newTarget = document.getElementById( data.goto ); // jshint ignore:line
           if ( newTarget && newTarget.classList.contains( "step" ) ) {
               event.detail.next = newTarget;
@@ -1937,6 +1956,7 @@
 * Copyright 2016 Henrik Ingo (@henrikingo)
 * Released under the MIT license.
 */
+// eslint-disable-next-line no-redeclare
 /* global window, document */
 
 ( function( document, window ) {
@@ -1945,6 +1965,7 @@
   var timeoutHandle;
 
   var triggerEvent = function( el, eventName, detail ) {
+    console.log('triggerE')
       var event = document.createEvent( "CustomEvent" );
       event.initCustomEvent( eventName, true, true, detail );
       el.dispatchEvent( event );
@@ -2054,6 +2075,7 @@
 
 // This file contains so much HTML, that we will just respectfully disagree about js
 /* jshint quotmark:single */
+// eslint-disable-next-line no-redeclare
 /* global navigator, top, setInterval, clearInterval, document, window */
 
 ( function( document, window ) {
@@ -2860,6 +2882,7 @@
 * Copyright 2018 Holger Teichert (@complanar)
 * Released under the MIT license.
 */
+// eslint-disable-next-line no-redeclare
 /* global window, document */
 
 ( function( document, window ) {
@@ -3070,6 +3093,7 @@
 * Adapted to a plugin from a submission by @Kzeni:
 * https://github.com/impress/impress.js/issues/333
 */
+// eslint-disable-next-line no-redeclare
 /* global document, navigator */
 ( function( document ) {
   "use strict";
@@ -3172,6 +3196,7 @@
 * Copyright 2016 Henrik Ingo (@henrikingo)
 * Released under the MIT license.
 */
+// eslint-disable-next-line no-redeclare
 /* global window, document */
 ( function( document, window ) {
   "use strict";
@@ -3238,6 +3263,7 @@
 *  source:  http://github.com/bartaz/impress.js/
 *
 */
+// eslint-disable-next-line no-redeclare
 /* global document */
 ( function( document ) {
   "use strict";
@@ -3421,6 +3447,7 @@
 
 // This file contains so much HTML, that we will just respectfully disagree about js
 /* jshint quotmark:single */
+// eslint-disable-next-line no-redeclare
 /* global document */
 
 ( function( document ) {
@@ -3530,6 +3557,7 @@
 } )( document );
 
 
+// eslint-disable-next-line no-redeclare
 /* global document */
 ( function( document ) {
   "use strict";
@@ -3634,6 +3662,7 @@
 * Released under the MIT license.
 */
 
+// eslint-disable-next-line no-redeclare
 /* global document, window */
 
 ( function( document, window ) {
@@ -3658,6 +3687,7 @@
       if ( typeof numeric !== "string" ) {
           return toNumber( numeric, fallback );
       }
+      // eslint-disable-next-line no-useless-escape
       var ratio = numeric.match( /^([+-]*[\d\.]+)([wh])$/ );
       if ( ratio == null ) {
           return toNumber( numeric, fallback );
@@ -3774,6 +3804,7 @@
       event.detail.api.lib.gc.pushCallback( function() {
           var steps = startingState[ root.id ];
           var step;
+          // eslint-disable-next-line no-cond-assign
           while ( step = steps.pop() ) {
 
               // Reset x/y/z in cases where this plugin has changed it.
@@ -3820,6 +3851,7 @@
 *
 */
 
+// eslint-disable-next-line no-redeclare
 /* global document, window */
 
 ( function( document, window ) {
@@ -3854,6 +3886,7 @@
 * Released under the MIT license.
 */
 
+// eslint-disable-next-line no-redeclare
 /* global document, window */
 
 ( function( document, window ) {
@@ -3938,6 +3971,7 @@
 * Copyright 2016 Henrik Ingo (@henrikingo)
 * Released under the MIT license.
 */
+// eslint-disable-next-line no-redeclare
 /* global document, window */
 ( function( document, window ) {
   "use strict";
@@ -3968,6 +4002,7 @@
 * Released under the MIT license.
 */
 
+// eslint-disable-next-line no-redeclare
 /* global document, window */
 
 ( function( document, window ) {
@@ -4123,6 +4158,7 @@
 *
 * MIT License
 */
+// eslint-disable-next-line no-redeclare
 /* global document, window */
 ( function( document, window ) {
   "use strict";
@@ -4243,12 +4279,16 @@
 * Released under the MIT license.
 */
 
+// eslint-disable-next-line no-redeclare
 /* global document */
 
 ( function( document ) {
+  
   "use strict";
+  setTimeout(() => {
   var toolbar = document.getElementById( "impress-toolbar" );
   var groups = [];
+  console.log('wqewqew',toolbar)
 
   /**
    * Get the span element that is a child of toolbar, identified by index.
@@ -4304,7 +4344,9 @@
        * :param: e.detail.group    integer specifying the span element where widget will be placed
        * :param: e.detail.element  a dom element to add to the toolbar
        */
+       console.log('adsa')
       toolbar.addEventListener( "impress:toolbar:appendChild", function( e ) {
+        console.log(e,'adsa')
           var group = getGroupElement( e.detail.group );
           group.appendChild( e.detail.element );
       } );
@@ -4335,4 +4377,7 @@
       } );
   } // If toolbar
 
-} )( document );
+},400)
+})
+// eslint-disable-next-line no-unexpected-multiline
+( document );

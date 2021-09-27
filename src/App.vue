@@ -1,27 +1,16 @@
-<template>
-  <div class="left"> 
-    <button @click="goOn">上一步</button>
-    <button @click="goNext">下一步</button>
-  </div>
-  
-  <HelloWorld />
+<template>  
+  <Demo/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Demo from './components/index.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Demo
   },
   setup() {
-    const goOn = () => {
-      console.log('4444444444')
-    }
-    return {
-      goOn
-    }
   }
 }
 </script>
